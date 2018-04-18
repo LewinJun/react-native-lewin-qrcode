@@ -1,4 +1,4 @@
-package io.yimiao.bitcoin.module;
+package com.lewin.qrcode;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

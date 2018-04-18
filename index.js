@@ -1,6 +1,7 @@
-import {
-    NativeModules,
-  } from 'react-native';
+
+'use strict'
+
+const { NativeModules } = require('react-native');
   export const  readerQR= (fileUrl)=>{
     var QRScanReader = NativeModules.QRScanReader;
 

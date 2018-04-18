@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "二维码识别",
   "main": "index.js",
+  "nativePackage": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepare": "rm -rf android/build Example/android/build Example/android/app/build node_modules"
   },
   "repository": {
     "type": "git",
@@ -18,8 +19,5 @@
   "bugs": {
     "url": "https://github.com/LewinJun/react-native-lewin-qrcode/issues"
   },
-  "homepage": "https://github.com/LewinJun/react-native-lewin-qrcode#readme",
-  "peerDependencies": {
-    "react-native": "latest"
-  }
+  "homepage": "https://github.com/LewinJun/react-native-lewin-qrcode#readme"
 }

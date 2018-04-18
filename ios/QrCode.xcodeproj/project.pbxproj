@@ -7,21 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		078A9483208738FB00EC805D /* QrCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 078A9481208738FB00EC805D /* QrCode.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		078A94AB20873A0700EC805D /* QRScanReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 078A94A920873A0700EC805D /* QRScanReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		078A94AC20873A0700EC805D /* QRScanReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 078A94AA20873A0700EC805D /* QRScanReader.m */; };
+		07FD4BEE20874AD2002FBD31 /* QRScanReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 078A94AA20873A0700EC805D /* QRScanReader.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		07FD4BE320874AB3002FBD31 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		078A947E208738FB00EC805D /* QrCode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QrCode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		078A9481208738FB00EC805D /* QrCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QrCode.h; sourceTree = "<group>"; };
-		078A9482208738FB00EC805D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		078A94A920873A0700EC805D /* QRScanReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRScanReader.h; sourceTree = "<group>"; };
 		078A94AA20873A0700EC805D /* QRScanReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRScanReader.m; sourceTree = "<group>"; };
+		07FD4BE520874AB3002FBD31 /* libQRCode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libQRCode.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		078A947A208738FB00EC805D /* Frameworks */ = {
+		07FD4BE220874AB3002FBD31 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -34,7 +42,7 @@
 		078A9474208738FB00EC805D = {
 			isa = PBXGroup;
 			children = (
-				078A9480208738FB00EC805D /* QrCode */,
+				07FD4BE620874AB3002FBD31 /* QRCode */,
 				078A947F208738FB00EC805D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -42,54 +50,39 @@
 		078A947F208738FB00EC805D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				078A947E208738FB00EC805D /* QrCode.framework */,
+				07FD4BE520874AB3002FBD31 /* libQRCode.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		078A9480208738FB00EC805D /* QrCode */ = {
+		07FD4BE620874AB3002FBD31 /* QRCode */ = {
 			isa = PBXGroup;
 			children = (
 				078A94A920873A0700EC805D /* QRScanReader.h */,
 				078A94AA20873A0700EC805D /* QRScanReader.m */,
-				078A9481208738FB00EC805D /* QrCode.h */,
-				078A9482208738FB00EC805D /* Info.plist */,
 			);
-			path = QrCode;
+			path = QRCode;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		078A947B208738FB00EC805D /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				078A9483208738FB00EC805D /* QrCode.h in Headers */,
-				078A94AB20873A0700EC805D /* QRScanReader.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		078A947D208738FB00EC805D /* QrCode */ = {
+		07FD4BE420874AB3002FBD31 /* QRCode */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 078A9486208738FB00EC805D /* Build configuration list for PBXNativeTarget "QrCode" */;
+			buildConfigurationList = 07FD4BEB20874AB3002FBD31 /* Build configuration list for PBXNativeTarget "QRCode" */;
 			buildPhases = (
-				078A9479208738FB00EC805D /* Sources */,
-				078A947A208738FB00EC805D /* Frameworks */,
-				078A947B208738FB00EC805D /* Headers */,
-				078A947C208738FB00EC805D /* Resources */,
+				07FD4BE120874AB3002FBD31 /* Sources */,
+				07FD4BE220874AB3002FBD31 /* Frameworks */,
+				07FD4BE320874AB3002FBD31 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = QrCode;
-			productName = QrCode;
-			productReference = 078A947E208738FB00EC805D /* QrCode.framework */;
-			productType = "com.apple.product-type.framework";
+			name = QRCode;
+			productName = QRCode;
+			productReference = 07FD4BE520874AB3002FBD31 /* libQRCode.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -100,7 +93,7 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = lewin;
 				TargetAttributes = {
-					078A947D208738FB00EC805D = {
+					07FD4BE420874AB3002FBD31 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
@@ -118,27 +111,17 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				078A947D208738FB00EC805D /* QrCode */,
+				07FD4BE420874AB3002FBD31 /* QRCode */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		078A947C208738FB00EC805D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		078A9479208738FB00EC805D /* Sources */ = {
+		07FD4BE120874AB3002FBD31 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				078A94AC20873A0700EC805D /* QRScanReader.m in Sources */,
+				07FD4BEE20874AD2002FBD31 /* QRScanReader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,39 +238,23 @@
 			};
 			name = Release;
 		};
-		078A9487208738FB00EC805D /* Debug */ = {
+		07FD4BEC20874AB3002FBD31 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = QrCode/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lewin.QrCode;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		078A9488208738FB00EC805D /* Release */ = {
+		07FD4BED20874AB3002FBD31 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = QrCode/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lewin.QrCode;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -305,11 +272,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		078A9486208738FB00EC805D /* Build configuration list for PBXNativeTarget "QrCode" */ = {
+		07FD4BEB20874AB3002FBD31 /* Build configuration list for PBXNativeTarget "QRCode" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				078A9487208738FB00EC805D /* Debug */,
-				078A9488208738FB00EC805D /* Release */,
+				07FD4BEC20874AB3002FBD31 /* Debug */,
+				07FD4BED20874AB3002FBD31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
