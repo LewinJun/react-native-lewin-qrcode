@@ -13,12 +13,13 @@ react-native 识别照片二维码
 
 ## Usage
 ### NOTE: 可以参考Example的App.js中的openPhoto方法
+
 ```javascript
 import {readerQR} from 'react-native-lewin-qrcode'
-  //path 图片文件的路径
-  readerQR(path).then((data)=>{
-     Alert.alert('识别结果',data);
-  }).catch((err)=>{
-     Alert.alert('识别失败');
-  });
-```javascript
+//path 图片文件的路径
+readerQR(path).then((data)=>{
+  Alert.alert('识别结果',data);
+}).catch((err)=>{
+   Alert.alert('识别失败');
+});
+```
