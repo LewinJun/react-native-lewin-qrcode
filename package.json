@@ -1,0 +1,25 @@
+{
+  "name": "react-native-lewin-qrcode",
+  "version": "1.0.0",
+  "description": "二维码识别",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LewinJun/react-native-lewin-qrcode.git"
+  },
+  "keywords": [
+    "qrcode"
+  ],
+  "author": "lewin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LewinJun/react-native-lewin-qrcode/issues"
+  },
+  "homepage": "https://github.com/LewinJun/react-native-lewin-qrcode#readme",
+  "peerDependencies": {
+    "react-native": "latest"
+  }
+}
