@@ -1,7 +1,7 @@
 {
   "name": "react-native-lewin-qrcode",
-  "version": "1.0.0",
-  "description": "二维码识别",
+  "version": "1.0.1",
+  "description": "二维码识别，选择相册里面的一张照片进行识别二维码",
   "main": "index.js",
   "nativePackage": true,
   "scripts": {
@@ -12,7 +12,11 @@
     "url": "git+https://github.com/LewinJun/react-native-lewin-qrcode.git"
   },
   "keywords": [
-    "qrcode"
+    "qrcode",
+    "react",
+    "二维码",
+    "识别",
+    "native"
   ],
   "author": "lewin",
   "license": "ISC",

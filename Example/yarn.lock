@@ -4303,9 +4303,9 @@ react-native-image-picker@^0.26.7:
   version "0.26.7"
   resolved "http://registry.npm.taobao.org/react-native-image-picker/download/react-native-image-picker-0.26.7.tgz#ad2ee957f7f6cc01396893ea03d84cb2adb2e376"
 
-"react-native-lewin-qrcode@git://github.com/LewinJun/react-native-lewin-qrcode.git#1.0":
+react-native-lewin-qrcode@^1.0.0:
   version "1.0.0"
-  resolved "git://github.com/LewinJun/react-native-lewin-qrcode.git#69fae1cccbaa8961250f874794e4576861786bf3"
+  resolved "https://registry.npmjs.org/react-native-lewin-qrcode/-/react-native-lewin-qrcode-1.0.0.tgz#5594a9334398f2689dc2ae540abe6182f2459b5c"
 
 react-native@latest:
   version "0.55.3"
