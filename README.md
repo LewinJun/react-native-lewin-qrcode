@@ -6,8 +6,8 @@ react-native 识别照片二维码
 - [Usage](#usage)
 
 ## Install
-### 1: 暂时没有发布到npm所以需要自己手动添加到dependencies 
-`"react-native-lewin-qrcode": "git://github.com/LewinJun/react-native-lewin-qrcode.git#1.0"`
+### 1: yarn add 或者npm install,现在最新版本是1.0.0
+`yarn add react-native-lewin-qrcode  `
 ### 2: yarn install 或 npm install
 ### 3: react-native link react-native-lewin-qrcode
 
