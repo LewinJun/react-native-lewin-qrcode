@@ -2,6 +2,7 @@ package com.lewin.qrcode;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Base64;
 
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -38,62 +39,131 @@ public class QRScanReader extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void readerQR(String fileUrl, Promise promise ) {
-        Result result = scanningImage(fileUrl);
+    public void readerQR(String fileUrl1, Promise promise ) {
+        String fileUrl = fileUrl1.replace("file://","");
+        Result result = scannLumin(fileUrl);
         if(result == null){
-            promise.reject("404","没有相关的二维码");
-//            result = decodeBarcodeRGB(fileUrl);
-//            if(result == null){
-//                result = decodeBarcodeYUV(fileUrl);
-//                if(result == null){
-//                    promise.reject("404","没有相关的二维码");
-//                }else{
-//                    promise.resolve(result.getText());
-//                }
-//            }else{
-//                promise.resolve(result.getText());
-//            }
+//            promise.reject("404","没有相关的二维码");
+            result = scanningImage(fileUrl);
+            if(result == null){
+                result = decodeBarcodeRGB(fileUrl);
+                if(result == null){
+                    result = decodeBarcodeYUV(fileUrl);
+                    if(result == null){
+                        promise.reject("404","没有相关的二维码");
+                    }else{
+                        promise.resolve(result.getText());
+                    }
+                }else{
+                    promise.resolve(result.getText());
+                }
+            }else {
+                promise.resolve(result.getText());
+            }
 
         }else{
             promise.resolve(result.getText());
         }
     }
 
-    /**
+    public Result scannLumin(String path) {
+
+        Result re = null;
+        try {
+            Bitmap barcode = fromToFileOrBase64(path, null);
+            int width = barcode.getWidth();
+            int height = barcode.getHeight();
+            int[] data = new int[width * height];
+            barcode.getPixels(data, 0, width, 0, 0, width, height);    //得到像素
+            RGBLuminanceSource source = new RGBLuminanceSource(width, height, data);   //RGBLuminanceSource对象
+            BinaryBitmap bitmap1 = new BinaryBitmap(new HybridBinarizer(source));
+            QRCodeReader reader = new QRCodeReader();
+            //得到结果
+            re = reader.decode(bitmap1);
+        } catch (NotFoundException e) {
+            e.printStackTrace();
+        } catch (ChecksumException e) {
+            e.printStackTrace();
+        } catch (FormatException e) {
+            e.printStackTrace();
+        }
+        return re;
+
+    }
+
+    public static Bitmap base64ToBitmap(String base64Data) {
+        try {
+            byte[] bytes = Base64.decode(base64Data, Base64.DEFAULT);
+            return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        }catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+    public static Bitmap fromToFileOrBase64(String fileOrBase64, BitmapFactory.Options options) {
+        try {
+
+            if (fileOrBase64.toLowerCase().indexOf(";base64,") > 0) {
+                return base64ToBitmap(fileOrBase64);
+            }
+            BitmapFactory.Options opts = null;
+            if (options == null) {
+                opts = new BitmapFactory.Options();
+                opts.inSampleSize = 1;
+            } else {
+                opts = options;
+            }
+
+            Bitmap barcode = BitmapFactory.decodeFile(fileOrBase64, opts);
+            return barcode;
+
+        }catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+
+  /**
      * 扫描二维码图片的方法
      * @param path
      * @return
      */
     public Result scanningImage(String path) {
-        if (path == null || path.length() == 0) {
-            return null;
-        }
-        Hashtable<DecodeHintType, String> hints = new Hashtable<>();
-        hints.put(DecodeHintType.CHARACTER_SET, "UTF8"); //设置二维码内容的编码
 
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = true; // 先获取原大小
-        Bitmap scanBitmap = BitmapFactory.decodeFile(path, options);
-        options.inJustDecodeBounds = false; // 获取新的大小
-        int sampleSize = (int) (options.outHeight / (float) 200);
-        if (sampleSize <= 0)
-            sampleSize = 1;
-        options.inSampleSize = sampleSize;
-        scanBitmap = BitmapFactory.decodeFile(path, options);
-        int width=scanBitmap.getWidth();
-        int height=scanBitmap.getHeight();
-        int[] pixels=new int[width*height];
-        scanBitmap.getPixels(pixels,0,width,0,0,width,height);//获取图片像素点
-        RGBLuminanceSource source = new RGBLuminanceSource(scanBitmap.getWidth(),scanBitmap.getHeight(),pixels);
-        BinaryBitmap bitmap1 = new BinaryBitmap(new HybridBinarizer(source));
-        QRCodeReader reader = new QRCodeReader();
         try {
+            if (path == null || path.length() == 0) {
+                return null;
+            }
+            Hashtable<DecodeHintType, String> hints = new Hashtable<>();
+            hints.put(DecodeHintType.CHARACTER_SET, "UTF8"); //设置二维码内容的编码
+
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inJustDecodeBounds = true; // 先获取原大小
+            Bitmap scanBitmap = fromToFileOrBase64(path,  options);
+            options.inJustDecodeBounds = false; // 获取新的大小
+            int sampleSize = (int) (options.outHeight / (float) 200);
+            if (sampleSize <= 0)
+                sampleSize = 1;
+            options.inSampleSize = sampleSize;
+            scanBitmap = BitmapFactory.decodeFile(path, options);
+            int width=scanBitmap.getWidth();
+            int height=scanBitmap.getHeight();
+            int[] pixels=new int[width*height];
+            scanBitmap.getPixels(pixels,0,width,0,0,width,height);//获取图片像素点
+            RGBLuminanceSource source = new RGBLuminanceSource(scanBitmap.getWidth(),scanBitmap.getHeight(),pixels);
+            BinaryBitmap bitmap1 = new BinaryBitmap(new HybridBinarizer(source));
+            QRCodeReader reader = new QRCodeReader();
             return reader.decode(bitmap1, hints);
         } catch (NotFoundException e) {
             e.printStackTrace();
         } catch (ChecksumException e) {
             e.printStackTrace();
         } catch (FormatException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
@@ -106,14 +176,18 @@ public class QRScanReader extends ReactContextBaseJavaModule {
      * @return
      */
     public static Result decodeBarcodeRGB(String path) {
+        try {
 
-        BitmapFactory.Options opts = new BitmapFactory.Options();
-        opts.inSampleSize = 1;
-        Bitmap barcode = BitmapFactory.decodeFile(path, opts);
-        Result result = decodeBarcodeRGB(barcode);
-        barcode.recycle();
-        barcode = null;
-        return result;
+            Bitmap barcode = fromToFileOrBase64(path, null);
+            Result result = decodeBarcodeRGB(barcode);
+            barcode.recycle();
+            barcode = null;
+            return result;
+        }catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+
     }
 
     /**
@@ -152,16 +226,19 @@ public class QRScanReader extends ReactContextBaseJavaModule {
      * @return
      */
     public static Result decodeBarcodeYUV(String path) {
-        if (path == null || path.length() == 0) {
+        try{
+            if (path == null || path.length() == 0) {
+                return null;
+            }
+            Bitmap barcode = fromToFileOrBase64(path, null);
+            Result result = decodeBarcodeYUV(barcode);
+            barcode.recycle();
+            barcode = null;
+            return result;
+        }catch (Exception ex) {
+            ex.printStackTrace();
             return null;
         }
-        BitmapFactory.Options opts = new BitmapFactory.Options();
-        opts.inSampleSize = 1;
-        Bitmap barcode = BitmapFactory.decodeFile(path, opts);
-        Result result = decodeBarcodeYUV(barcode);
-        barcode.recycle();
-        barcode = null;
-        return result;
     }
 
     /**
