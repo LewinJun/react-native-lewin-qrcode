@@ -6,11 +6,7 @@ const { NativeModules } = require('react-native');
  * 识别照片中的二维码
  * @param {string} fileUrl 本地图片地址
  */
-const readerQR = (fileUrl) => {
+export const readerQR = (fileUrl) => {
   var QRScanReader = NativeModules.QRScanReader;
   return QRScanReader.readerQR(fileUrl);
-}
-
-export default {
-  discernQR: readerQR
 }
