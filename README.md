@@ -6,7 +6,7 @@ react-native 识别照片二维码
 - [Usage](#usage)
 
 ## Install
-### 1: yarn add 或者npm install,现在最新版本是1.0.0
+### 1: yarn add 或者npm install,现在最新版本是1.1.0
 `yarn add react-native-lewin-qrcode  `
 ### 2: yarn install 或 npm install
 ### 3: react-native link react-native-lewin-qrcode
